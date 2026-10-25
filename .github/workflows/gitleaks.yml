@@ -1,3 +1,4 @@
+
 name: Gitleaks Scan
 
 on:
@@ -6,8 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  gitleaks:
-    name: Scan for secrets
+  scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run Gitleaks
+      - name: Scan for secrets
         uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: custom-gitleaks.toml
