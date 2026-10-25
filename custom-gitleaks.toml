@@ -1,0 +1,12 @@
+title = "Gitleaks Custom Rules"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "my-custom-password"
+description = "Detect custom password pattern"
+regex = '''LABPASS\s*=\s*["']([a-zA-Z0-9_-]{8,})["']'''
+secretGroup = 1
+keywords = ["LABPASS"]
+tags = ["custom", "password"]
